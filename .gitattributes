@@ -1,0 +1,3 @@
+# 站点是纯静态 web 文件，统一按 LF 检出/入库，
+# 避免 Windows（core.autocrlf=true）上出现无意义的换行符差异。
+* text=auto eol=lf
