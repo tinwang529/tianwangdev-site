@@ -1,3 +1,6 @@
 # 站点是纯静态 web 文件，统一按 LF 检出/入库，
 # 避免 Windows（core.autocrlf=true）上出现无意义的换行符差异。
 * text=auto eol=lf
+
+# 批处理必须按 CRLF 检出，否则 cmd 解析可能出问题。
+*.bat text eol=crlf
