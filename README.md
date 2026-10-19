@@ -27,9 +27,9 @@ Start-Process .\public\index.html
 
 - 流水线：`.github/workflows/deploy.yml`，push 触发，执行 `wrangler deploy`
 - Worker：`dark-king-d1b9`，自定义域 `tianwangdev.com`
-- 需要配置的仓库 Secrets（Settings → Secrets and variables → Actions）：
-  - `CLOUDFLARE_API_TOKEN`：Cloudflare → My Profile → API Tokens，权限至少 `Workers Scripts: Edit`
-  - `CLOUDFLARE_ACCOUNT_ID`：Cloudflare 后台右侧显示的 Account ID
+- 需要配置的仓库 Secret（Settings → Secrets and variables → Actions）：
+  - `CLOUDFLARE_API_TOKEN`：Cloudflare → My Profile → API Tokens，权限至少 `Workers Scripts: Edit`（用官方模板 `Edit Cloudflare Workers` 即可）
+  - `CLOUDFLARE_ACCOUNT_ID`：可选。令牌只绑了一个账户时不需要；多账户时再填，且注意不要粘进空格/换行
 - 也可手动触发：Actions → `Deploy to Cloudflare Workers` → `Run workflow`
 - 之后可在 Actions 页面看到每次部署的日志；失败只会影响部署，不会动仓库内容
 

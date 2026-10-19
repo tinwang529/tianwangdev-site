@@ -24,7 +24,7 @@ jobs:
       - name: 部署到 Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
+          # 令牌只绑定了单个账户，wrangler 会自动识别，无需再传 accountId
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4"
           command: deploy
