@@ -1,0 +1,9 @@
+{
+  // 线上 Worker 名称：改了名字会新建一个 Worker，而不是更新现有站点
+  "name": "dark-king-d1b9",
+  "compatibility_date": "2026-10-01",
+  // 只部署静态资产：public/ 的内容映射到站点根路径 /
+  "assets": {
+    "directory": "./public"
+  }
+}
