@@ -44,6 +44,20 @@ param(
 # 设成 Stop 反而会打断脚本。所有判断都基于 git 的退出码。
 $ErrorActionPreference = 'Continue'
 
+# --------------------------------------------------------------- 字符编码
+# Windows PowerShell 5.1 默认按系统代码页（简体中文为 GBK/936）解码原生命令
+# 的 stdout，而 git 输出的是 UTF-8：中文会变成“鎹㈡垚…”或问号，看起来像报错。
+# 这里统一把控制台输出编码和管道编码切换成 UTF-8（无 BOM），git 的中文就正常了。
+$script:Utf8 = New-Object System.Text.UTF8Encoding $false
+try {
+    [Console]::OutputEncoding = $script:Utf8
+}
+catch {
+    # 极少数没有控制台或输出被重定向的场景不允许修改，忽略即可。
+}
+# PowerShell 把字符串通过管道传给原生命令时使用的编码（5.1 默认是 ASCII）。
+$OutputEncoding = $script:Utf8
+
 # --------------------------------------------------------------- 输出小工具
 function Show-Title {
     param([string]$Text)
